@@ -35,7 +35,7 @@ class PluginMistakes extends Plugin
     {
         parent::Init();
         // Если авторизация не требуется или если требуется и пользователь залогинен - подключим наши Js и Css
-        if(!Config::Get('plugin.mistakes.need_authorization') || ($this->oUserCurrent)) {
+        if(!Config::Get('need_authorization') || ($this->oUserCurrent)) {
             $this->Viewer_AppendScript(Plugin::GetTemplateWebPath(__CLASS__) . 'js/mistakes.js');
             $this->Viewer_AppendStyle(Plugin::GetTemplateWebPath(__CLASS__) . 'css/mistakes.css');
         }
