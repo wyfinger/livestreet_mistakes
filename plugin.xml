@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Mistakes</lang>
+        <lang name="russian">Ошибки</lang>
+    </name>
+    <author>
+        <lang name="default">Wyfinger</lang>
+        <lang name="russian">Wyfinger</lang>
+    </author>
+    <homepage>http://energobook.ru</homepage>
+    <version>0.1</version>
+    <requires>
+        <livestreet>0.5.0</livestreet>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Personal messages about mistakes from users.</lang>
+        <lang name="russian">Сообщения об опечатках от пользователей в личных сообщениях.</lang>
+    </description>
+    <delegate>
+        <module></module>
+        <action></action>
+        <template></template>
+        <entity></entity>
+    </delegate>
+</plugin>
