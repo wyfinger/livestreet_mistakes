@@ -15,5 +15,3 @@ return array(
     'js_300_char_max'          => 'You can select 300 chars max!',
 
 );
-
-?>

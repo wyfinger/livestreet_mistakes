@@ -14,7 +14,7 @@ class PluginMistakes_HookMistakes extends Hook
     public function RegisterHook()
     {
         // Если открыта страница топика и авторизация не требуется или если требуется и пользователь залогинен
-        if ((Router::GetAction() == "blog") && (!Config::Get('need_authorization') || ($this->oUserCurrent))) {
+        if ((Router::GetAction() == 'blog') && (!Config::Get('plugin.mistakes.need_authorization') || $this->User_GetUserCurrent())) {
             $this->AddHook('template_body_end', 'Mistakes');
         }
     }
