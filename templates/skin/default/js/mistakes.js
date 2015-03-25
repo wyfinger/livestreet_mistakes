@@ -103,14 +103,19 @@ function mis_get_sel_context(sel) {
 }
 
 function CtrlEnter() {
+    // Не разрешаем слать сообщение самомоу себе
+    if(js_StopCtrlEnter) {
+        return;
+    }
     var sel = mis_get_sel_text();
     if (sel.selected_text.length > 300) {
         //alert('Можно выделить не более 300 символов!');
-        alert(js_300_char_max);  // переменные js_select_text и js_300_char_max берутся из файла локали и прогружаются
-    }                            // черех Js в шаблоне
+        ls.msg.error(js_errorTitle, js_error300CharsMax); // переменные берутся из файла локали и прогружаются
+                                                          // через Js в шаблоне
+    }
     else if (sel.selected_text.length == 0) {
-        //alert('Выделите ошибку!');
-        alert(js_select_text);
+        //alert('Выделите текст, содержащий ошибку!');
+        ls.msg.error(js_errorTitle, js_errorSelectText);
     }
     else {
         // Get selection context.

@@ -39,16 +39,16 @@ class PluginMistakes_ActionAjax extends PluginMistakes_Inherit_ActionAjax
         $topic_id = preg_replace('%.*/(\d+)\.html.*%simU', '$1', $mistake_url);
         $topic = $this->Topic_GetTopicById($topic_id);
 
+        // Нельзя отправлять сообщения самому себе
+        if($this->oUserCurrent->getUserId()==$topic->getUserId()) {
+            return;
+        }
+
         // Если разрешено отправлять сообщения об ошибках ананимно шлем сообщение от админа
         // Удалил лишнюю логику, need_authorization с пустым oUserCurrent уже проверено выше
         $message_from = $this->oUserCurrent ? $this->oUserCurrent->getUserId() : 1;
 
         $message_to = $topic->getUserId();
-
-        if (!Config::Get('plugin.mistakes.can_send_himself') && ($message_from==$message_to)) {
-            $this->Message_AddErrorSingle($this->Lang_Get('plugin.mistakes.can_not_send_himself'), $this->Lang_Get('error'));
-            return;
-        }
 
         $message_theme = str_replace(array('#topic_title#', '#topic_link#', '#mistake_text#', '#mistake_comment#'),
             array($topic->getTitle(), $mistake_url, $mistake_text, $mistake_comment), $this->Lang_Get('plugin.mistakes.message_theme'));

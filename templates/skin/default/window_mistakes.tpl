@@ -4,8 +4,13 @@
         <a href="#" class="close jqmClose"></a>
     </header>
     <script type="text/javascript">
-        var js_select_text="{$aLang.plugin.mistakes.js_select_text}";
-        var js_300_char_max="{$aLang.plugin.mistakes.js_300_char_max}";
+        var js_errorTitle="{$aLang.plugin.mistakes.js_errorTitle}";
+        var js_errorSelectText="{$aLang.plugin.mistakes.js_errorSelectText}";
+        var js_error300CharsMax="{$aLang.plugin.mistakes.js_error300CharsMax}";
+        var js_StopCtrlEnter = false;
+        if ({$oTopic->getUserId()}=={$oUserCurrent->getUserId()}) {
+            js_StopCtrlEnter = true;
+        }
     </script>
     <div class="modal-content">
         <form method="POST" action="" enctype="multipart/form-data" id="block_mistake_comment" onsubmit="return false;"

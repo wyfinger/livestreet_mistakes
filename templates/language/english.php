@@ -11,7 +11,8 @@ return array(
                                    Text with mistake:<br/>#mistake_text#<br/><br/>#mistake_comment#',
     'need_authorization_error' => 'Anonymous users can\'t send mistake messages!',
     'can_not_send_himself'     => 'Can\'t send message for himself!',
-    'js_select_text'           => 'Select a mistake!',
-    'js_300_char_max'          => 'You can select 300 chars max!',
+    'js_errorTitle'            => 'Error',
+    'js_errorSelectText'       => 'Select a mistake!',
+    'js_error300CharsMax'      => 'You can select 300 chars max!',
 
 );
