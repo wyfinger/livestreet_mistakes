@@ -8,9 +8,11 @@
         var js_errorSelectText="{$aLang.plugin.mistakes.js_errorSelectText}";
         var js_error300CharsMax="{$aLang.plugin.mistakes.js_error300CharsMax}";
         var js_StopCtrlEnter = false;
-        if ({$oTopic->getUserId()}=={$oUserCurrent->getUserId()}) {
-            js_StopCtrlEnter = true;
-        }
+        {if $oUserCurrent}
+            if ({$oTopic->getUserId()}=={$oUserCurrent->getUserId()}) {
+                js_StopCtrlEnter = true;
+            }
+        {/if}
     </script>
     <div class="modal-content">
         <form method="POST" action="" enctype="multipart/form-data" id="block_mistake_comment" onsubmit="return false;"
