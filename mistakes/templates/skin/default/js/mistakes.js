@@ -107,25 +107,28 @@ function CtrlEnter() {
     if(js_StopCtrlEnter) {
         return;
     }
-    var sel = mis_get_sel_text();
-    if (sel.selected_text.length > 300) {
-        //alert('Можно выделить не более 300 символов!');
-        ls.msg.error(js_errorTitle, js_error300CharsMax); // переменные берутся из файла локали и прогружаются
-                                                          // через Js в шаблоне
-    }
-    else if (sel.selected_text.length == 0) {
-        //alert('Выделите текст, содержащий ошибку!');
-        ls.msg.error(js_errorTitle, js_errorSelectText);
-    }
-    else {
-        // Get selection context.
-        mis = mis_get_sel_context(sel);
-        $("#mistake_comment").val('');
-        $("#mistake_text_div").html(mis);
-        $("#mistake_text_hide").val(mis);
-        $("#window_mistakes")
-            .jqm()
-            .jqmShow()
+    // Если окно сообщения об ошибке видимо - отправим сообщение
+    if($('#window_mistakes').is(":visible")) {
+        ls.ajaxSendMistake('block_mistake_comment');
+    } else {
+        var sel = mis_get_sel_text();
+        if (sel.selected_text.length > 300) {
+            //alert('Можно выделить не более 300 символов!');
+            ls.msg.error(js_errorTitle, js_error300CharsMax); // переменные берутся из файла локали и прогружаются
+                                                              // через Js в шаблоне
+        } else if (sel.selected_text.length == 0) {
+            //alert('Выделите текст, содержащий ошибку!');
+            ls.msg.error(js_errorTitle, js_errorSelectText);
+        } else {
+            // Get selection context.
+            mis = mis_get_sel_context(sel);
+            $("#mistake_comment").val('');
+            $("#mistake_text_div").html(mis);
+            $("#mistake_text_hide").val(mis);
+            $("#window_mistakes")
+                .jqm()
+                .jqmShow()
+        }
     }
 };
 

@@ -40,7 +40,7 @@ class PluginMistakes_ActionAjax extends PluginMistakes_Inherit_ActionAjax
         $topic = $this->Topic_GetTopicById($topic_id);
 
         // Нельзя отправлять сообщения самому себе
-        if($this->oUserCurrent->getUserId()==$topic->getUserId()) {
+        if($this->oUserCurrent && ($this->oUserCurrent->getUserId()==$topic->getUserId())) {
             return;
         }
 
